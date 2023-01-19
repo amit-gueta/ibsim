@@ -23,11 +23,11 @@ jobs:
           test -e ibsim*.tar.gz
       - name: Generate Changelog
         run: |
-           echo "All component versions are from recent master branch. Full list of changes are below." > ${{ github.workspace }}-CHANGELOG.txt
-           git shortlog -n  $(git tag --sort=-creatordate | head -2 | tail -n 1)..HEAD >> ${{ github.workspace }}-CHANGELOG.txt
-      - name: print Changelog
+           echo "All component versions are from recent master branch." > ${{ github.workspace }}-CHANGELOG.txt
+           echo "Full list of changes are below." >> ${{ github.workspace }}-CHANGELOG.txt
+           git shortlog -n $(git tag --sort=-creatordate | grep v1. | head -2 | tail -n 1)..HEAD >> ${{ github.workspace }}-CHANGELOG.txt
+      - name: Print Changelog
         run: |
-          ls
           cat ${{ github.workspace }}-CHANGELOG.txt
       - name: Release
         uses: softprops/action-gh-release@v0.1.15
