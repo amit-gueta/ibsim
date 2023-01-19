@@ -28,6 +28,7 @@ jobs:
            git shortlog -n $(git tag --sort=-creatordate | grep v1. | head -2 | tail -n 1)..HEAD >> ${{ github.workspace }}-CHANGELOG.txt
       - name: Print Changelog
         run: |
+          echo "$(git tag --sort=-creatordate | grep v1. | head -2 | tail -n 1)"
           cat ${{ github.workspace }}-CHANGELOG.txt
       - name: Release
         uses: softprops/action-gh-release@v0.1.15
