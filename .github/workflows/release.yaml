@@ -16,11 +16,13 @@ jobs:
           ./dist.sh
       - name: Testing
         run: |
+          pwd
           ls ${{ github.workspace }}
+          test -e ibsim*.tar.gz
       - name: Release
         uses: softprops/action-gh-release@v0.1.15
         if: startsWith(github.ref, 'refs/tags/')
         with:
           body: testing a body for release
           files: |
-            *.tar.gz
+            ibsim*.tar.gz
