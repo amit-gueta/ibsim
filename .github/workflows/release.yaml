@@ -4,7 +4,8 @@ run-name: ${{ github.actor }} triggered a release upon new tag
 on:
   push:
     tags:
-      - "ibsim-*.*"
+      - "v*.*.*"
+#      - "ibsim-*.*"
 
 jobs:
   Release:
