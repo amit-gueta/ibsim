@@ -4,7 +4,8 @@ run-name: ${{ github.actor }} triggered a release upon new tag
 on:
   push:
     tags:
-      - "v*.*.*"
+      - "ibsim-*.*"
+
 jobs:
   Release:
     runs-on: ubuntu-latest
@@ -14,7 +15,7 @@ jobs:
       - name: Build
         run: |
           ./dist.sh
-      - name: Testing
+      - name: Test
         run: |
           test -e ibsim*.tar.gz
       - name: Release
